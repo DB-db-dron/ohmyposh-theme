@@ -39,7 +39,7 @@
             "fetch_status": true,
             "fetch_upstream_icon": true
           },
-          "template": " {{ .HEAD }}{{ if .Working.Changed }} •{{ end }} "
+          "template": " {{ .HEAD }}{{ if gt .Behind 0 }} ↓{{ .Behind }}{{ end }}{{ if gt .Ahead 0 }} ↑{{ .Ahead }}{{ end }}{{ if .Staging.Changed }} +{{ add .Staging.Added .Staging.Modified .Staging.Deleted }}{{ end }}{{ if .Working.Changed }} ~{{ add .Working.Modified .Working.Deleted .Working.Untracked }}{{ end }} "
         },
         {
           "type": "text",
